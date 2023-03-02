@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://127.0.0.1:27017/todoapp-assign");
+mongoose.connect(
+  "mongodb+srv://rohittyagi022:ULnNlrAWZ1m6nVRd@cluster0.sjphfez.mongodb.net/?retryWrites=true&w=majority"
+);
 
 mongoose.set("strictQuery", true);
 
