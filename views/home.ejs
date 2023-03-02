@@ -1,0 +1,97 @@
+<link rel="stylesheet" href="/css/home-page.css" />
+
+
+<h1>TODO App / <%= title %></h1>
+
+<section id="section">
+  <h4>Title</h4>
+  <% if(locals.user){%>
+  <form action="/titles/create" method="post">
+    <div class="form-floating mb-3"></div>
+    <input
+      type="text"
+      name="content"
+      class="form-control"
+        id="floatingInput"
+      placeholder="Enter the Title of ToDo"
+    />
+    <label for="floatingInput">Title</label>
+    </div>
+    <button type="submit" class="btn btn-success form-btn mt-3" >Submit</button>
+  </form>
+  <%} %>
+
+  <div>
+    <ul>
+      <% for(title of titles){%>
+      <li id="post-list-item">
+        <div id="list-div">
+        <p>
+          <% if (locals.user && locals.user.id == title.user.id) { %>
+          <small>
+            <a class="delete-post-button" href="/titles/destory/<%= title.id %>"
+              ><h1>X</h1></a
+            >
+          </small>
+          <% } %> 
+          <h3><%= title.content %></h3>
+          <br />
+          <h5><%= title.user.name %> </h5> 
+        </p>
+    </div>
+        <div>
+          <% if(locals.user){%>
+          <form action="/tasks/create" method="post">
+            <label for="description"><h4>DESCRIPTION</h4></label>
+            <input
+              type="text"
+              placeholder="What do you need to do?"
+              name="content"
+              required
+            />
+            <hr />
+            <label for="category"><h4>CATEGORY</h4></label>
+            <select name="category" id="category">
+              <option selected disabled>Choose a category</option>
+              <option value="personal">Personal</option>
+              <option value="Work">Work</option>
+              <option value="school">School</option>
+              <option value="cleaning">Cleaning</option>
+              <option value="other">Other</option>
+            </select>
+            <hr />
+            <label for="date"><h4>DUE DATE</h4></label>
+            <input type="date" name="date" id="date" required />
+            <hr />
+            <input type="hidden" name="title" value="<%= title._id %>" />
+            <button type="submit">ADD TASK</button>
+            <hr />
+          </form>
+          <hr />
+          <%}%> <% if (locals.user && locals.user.id == task.user.id) { %>
+          <div >
+            <ul>
+              <% for(task of title.tasks){ %>
+              <li id="post-comments-list">
+                <p>
+                  <small>
+                    <a href="/tasks/destory/<%= task.id %>"><h6>X</h6></a>
+                  </small>
+                  <h6><%= task.content %></h6>
+                <h6><%= task.date%></h6>
+                  - <h6><%= task.category%></h6>
+                  - 
+                  <small> <h5>By - </h5> <h6><%= task.user.name %></h6> </small>
+                </p>
+              </li>
+
+              <%}%>
+            </ul>
+          </div>
+          <% } %>
+        </div>
+      </li>
+      <%} %>
+    </ul>
+  </div>
+</section>

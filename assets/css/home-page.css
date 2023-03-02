@@ -1,0 +1,30 @@
+#section {
+  display: flex;
+  flex-direction: column;
+  margin: 0 2rem;
+  /* background-color: aquamarine; */
+  /* align-items: center; */
+  text-align: center;
+}
+
+#post-list-item {
+  display: flex;
+  flex-direction: column;
+  background-color: aquamarine;
+  margin: 2rem;
+  width: 100%;
+}
+
+#list-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: crimson;
+  margin-bottom: 1rem;
+}
+
+#post-comments-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
